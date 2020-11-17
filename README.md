@@ -365,8 +365,16 @@ Deletes an existing service. Returns `204 No Content` if successfull.
 
 `GET /api/tickets`
 
+
 Return a list of all the tickets. Returns `200 Ok` if successfull.
 
+`GET /api/tickets?filter=usuario&filterId=2`
+
+You can filter by:  
+> - `usuario`: Filter by users
+> - `servicio`: Filter by services
+>> `filterId`: represents the ID of the object to filter by.
+    
 #### Response
     [
         {
