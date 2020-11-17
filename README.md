@@ -269,7 +269,7 @@ Deletes an existing user. Returns `204 No Content` if successfull.
 
 ### Get all
 
-`GET /api/usuarios`
+`GET /api/servicios`
 
 Return a list of all the services. Returns `200 Ok` if successfull.
 
@@ -359,7 +359,7 @@ Updates fields on an existing service. Returns `204 No Content` if successfull. 
 
 Deletes an existing service. Returns `204 No Content` if successfull.
 
-## SERVICIOS
+## TICKETS
 
 ### Get all
 
