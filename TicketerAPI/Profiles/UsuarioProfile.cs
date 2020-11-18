@@ -13,6 +13,8 @@ namespace TicketerAPI.Profiles
             //         opt => opt.MapFrom(usuario => usuario.Rol.Nombre));
             CreateMap<UsuarioCreateDTO, Usuario>();
             CreateMap<Usuario, UsuarioCreateDTO>();
+
+            CreateMap<Usuario, UsuarioReadDTO>();
         }
     }
 }

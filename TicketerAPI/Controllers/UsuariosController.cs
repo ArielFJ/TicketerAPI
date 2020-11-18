@@ -28,7 +28,7 @@ namespace TicketerAPI.Controllers
         {
             var userItems = await _userRepo.GetAll();
 
-            return Ok(userItems);
+            return Ok(_mapper.Map<IEnumerable<UsuarioReadDTO>>(userItems));
         }
 
         // GET /api/usuarios/1
@@ -38,7 +38,28 @@ namespace TicketerAPI.Controllers
             var userItem = await _userRepo.GetById(id);
 
             if(userItem != null)
-                return Ok(userItem);
+                return Ok(_mapper.Map<UsuarioReadDTO>(userItem));
+
+            return NotFound();
+        }
+
+        // GET /api/usuarios/check
+        [HttpGet("check")]
+        public ActionResult<Usuario> CheckUser(LoginDTO loginDTO)
+        {            
+            Usuario usuario = new Usuario();
+            var userExists = _userRepo.CheckUser(loginDTO.NombreUsuario, loginDTO.Contrasena, out usuario);
+
+            if(usuario != null)
+            {
+                if(!userExists)
+                {
+                    ModelState.AddModelError("No authenticated", "Your username or password seems incorrect");
+                    return Ok(ModelState);
+                }
+                                
+                return Ok(usuario);
+            }
 
             return NotFound();
         }

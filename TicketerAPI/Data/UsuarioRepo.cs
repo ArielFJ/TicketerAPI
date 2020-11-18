@@ -54,5 +54,18 @@ namespace TicketerAPI.Data
             }
             _context.Usuarios.Remove(usuario);
         }
+
+        public bool CheckUser(string username, string password, out Usuario usuario)
+        {            
+            var user = _context.Usuarios.ToList().Where(u => u.NombreUsuario == username).FirstOrDefault();
+            if(user == null)
+            {
+                usuario = null;
+                return false;
+            }
+
+            usuario = user;
+            return user.Contrasena == password ? true : false;
+        }
     }
 }

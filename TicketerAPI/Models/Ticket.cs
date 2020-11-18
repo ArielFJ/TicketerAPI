@@ -29,5 +29,10 @@ namespace TicketerAPI.Models
         public int PrioridadId { get; set; }
         [ForeignKey("PrioridadId")]
         public TicketPrioridad Prioridad { get; set; }
+
+        [Required]
+        public int ClienteId { get; set; }
+        [ForeignKey("ClienteId")]
+        public Cliente Cliente { get; set; }
     }
 }

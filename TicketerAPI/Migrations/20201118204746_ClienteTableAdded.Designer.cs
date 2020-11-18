@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketerAPI.Data;
 
 namespace TicketerAPI.Migrations
 {
     [DbContext(typeof(TicketerContext))]
-    partial class TicketerContextModelSnapshot : ModelSnapshot
+    [Migration("20201118204746_ClienteTableAdded")]
+    partial class ClienteTableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,9 +90,6 @@ namespace TicketerAPI.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("datetime2");
 
@@ -107,8 +106,6 @@ namespace TicketerAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
 
                     b.HasIndex("PrioridadId");
 
@@ -175,7 +172,6 @@ namespace TicketerAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Contrasena")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
@@ -194,12 +190,6 @@ namespace TicketerAPI.Migrations
 
             modelBuilder.Entity("TicketerAPI.Models.Ticket", b =>
                 {
-                    b.HasOne("TicketerAPI.Models.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("TicketerAPI.Models.TicketPrioridad", "Prioridad")
                         .WithMany()
                         .HasForeignKey("PrioridadId")
@@ -223,8 +213,6 @@ namespace TicketerAPI.Migrations
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Cliente");
 
                     b.Navigation("Prioridad");
 

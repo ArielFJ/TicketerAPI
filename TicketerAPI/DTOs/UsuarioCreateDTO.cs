@@ -6,11 +6,14 @@ namespace TicketerAPI.DTOs
     {        
         [Required]
         public string Nombre { get; set; }
-
         [Required]
-        public string Apellido { get; set; }
+        public string Apellido { get; set; }        
 
-        [Required] 
-        public int? RolId { get; set; }        
+        [DataType(DataType.Password)]
+        [Required]
+        [MinLength(6)]
+        public string Contrasena { get; set; }
+        [Required]
+        public int? RolId { get; set; }      
     }
 }

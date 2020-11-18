@@ -43,6 +43,7 @@ namespace TicketerAPI
             services.AddScoped<ITicketRepo, TicketRepo>();
             services.AddScoped<ITicketPrioridadRepo, TicketPrioridadRepo>();
             services.AddScoped<ITicketStatusRepo, TicketStatusRepo>();
+            services.AddScoped<IClienteRepo, ClienteRepo>();
             
             services
                 .AddControllers()

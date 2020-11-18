@@ -217,6 +217,26 @@ Return one user by its ID. Returns `200 Ok` if successfull.
         }
     }
 
+### Check user
+`POST /api/usuarios/check`
+
+Checks if an user exists by its username and password. Returns `200 Ok`.
+#### Request
+    {
+        "nombreUsuario": "testerUser_4",
+        "contrasena": "123456"
+    }
+#### Response if data is correct
+    {
+        "id": 4,
+        "nombre": "Tester",
+        "apellido": "User",
+        "nombreUsuario": "testerUser_4",
+        "contrasena": "123456",
+        "rolId": 2,
+        "rol": null
+    }
+
 ### Create one
 `POST /api/usuarios`
 
@@ -503,3 +523,104 @@ Updates fields on an existing ticket. Returns `204 No Content` if successfull. R
 `DELETE /api/tickets/1`
 
 Deletes an existing ticket. Returns `204 No Content` if successfull.
+
+## CLIENTES
+
+### Get all
+
+`GET /api/clientes`
+
+Return a list of all the clients. Returns `200 Ok` if successfull.
+
+`GET /api/clientes?nombre=comerciante`
+
+You can filter by:  
+> - `nombre`: Filter by name of the user. Name can be the incomplete name. Ex., if name is **Joseph**, you can look for **Jose**.
+
+
+#### Response
+    [
+        {
+            "id": 1,
+            "nombre": "Cliente",
+            "apellido": "1",
+            "nacimiento": "2001-11-12T00:00:00"
+        },
+        {
+            "id": 2,
+            "nombre": "Cliente",
+            "apellido": "2",
+            "nacimiento": "2001-11-12T00:00:00"
+        },
+        {
+            "id": 4,
+            "nombre": "Comerciante",
+            "apellido": "1",
+            "nacimiento": "2001-11-12T00:00:00"
+        },
+        {
+            "id": 5,
+            "nombre": "Empresario",
+            "apellido": "1",
+            "nacimiento": "2001-11-12T00:00:00"
+        }
+    ]
+
+### Get one
+`GET /api/clientes/3`
+
+Return one client by its ID. Returns `200 Ok` if successfull.
+#### Response
+    {
+        "id": 3,
+        "nombre": "Cliente",
+        "apellido": "nuevo",
+        "nacimiento": "2001-11-12T00:00:00"
+    }
+
+### Create one
+`POST /api/clientes`
+
+Create a new client. Returns `201 Created` if successfull.
+#### Request
+    {
+        "nombre": "Comerciante",
+        "Apellido": "2",
+        "nacimiento": "2001-11-12"
+    }
+#### Response
+    {
+        "id": 5,
+        "nombre": "Comerciante",
+        "apellido": "2",
+        "nacimiento": "2001-11-12T00:00:00"
+    }
+
+### Update one
+`PUT /api/clientes/1`
+
+Updates an existing client. Returns `204 No Content` if successfull.
+#### Request
+    {
+        "nombre": "Empresario",
+        "Apellido": "1",
+        "nacimiento": "2001-11-12"
+    }
+
+### Partial update one
+`PATCH /api/clientes/1`
+
+Updates fields on an existing client. Returns `204 No Content` if successfull. Receives a JsonPatchDocument.
+#### Request
+    [
+        {
+            "op": "replace",
+            "path": "/apellido",
+            "value": "nuevo"
+        }
+    ]
+
+### Delete one
+`DELETE /api/clientes/1`
+
+Deletes an existing client. Returns `204 No Content` if successfull.

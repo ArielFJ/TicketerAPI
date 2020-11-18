@@ -17,5 +17,6 @@ namespace TicketerAPI.Data
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<TicketPrioridad> TicketPrioridades { get; set; }
         public DbSet<TicketStatus> TicketEstados { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }

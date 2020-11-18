@@ -14,6 +14,8 @@ namespace TicketerAPI.DTOs
         [Required]
         public int? TicketStatusId { get; set; }        
         [Required]
-        public int? PrioridadId { get; set; }        
+        public int? PrioridadId { get; set; }  
+        [Required]
+        public int? ClienteId { get; set; }      
     }
 }
