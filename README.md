@@ -2,6 +2,35 @@
 
 Web API that acts as backend of a ticket management web project.
 
+This app uses an AWS MSSQL database to be accesible out of localhost and the API is hosted in
+`http://ticketerapi.eastus.azurecontainer.io/`
+
+The project in this repo has being set up with a local MSSQL database. If you want to run it, go to `TicketerAPI/appsettings.json` and modify `localConnection` value with your own MSSQL connection string.
+
+The API is hosted as a Docker Container in Azure; if you want to run it as a Docker Container, inside `TicketerAPI`folder, there's a Dockerfile that you can build and run with Docker and execute the app containerized.
+
+### Commands to run with Docker
+Being on the root folder, where **TicketerAPI.sln** is located:
+    
+    # cd TicketerAPI
+    # docker build -t YOUR_APP_NAME .
+    # docker run -p 8080:80 YOUR_APP_NAME 
+
+Your Docker Container Image is now running on http://localhost:8080/.
+
+## Commands to run with dotnet console
+
+Being on the project folder(TicketerAPI):
+
+After changing the connection string in the project with your own connection string in the file `appsettings.json`, to update the database run:
+    
+    # dotnet ef database update
+
+To execute the API, run:
+
+    # dotnet run
+
+
 ## ROLES
 
 ### Get all
