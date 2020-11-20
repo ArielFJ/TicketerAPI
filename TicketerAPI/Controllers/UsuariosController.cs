@@ -71,6 +71,8 @@ namespace TicketerAPI.Controllers
             var usuario = _mapper.Map<Usuario>(usuarioCreateDTO);
             await _userRepo.CreateEntity(usuario);
             await _userRepo.SaveChanges();            
+            
+            usuario = await _userRepo.GetById(usuario.Id);
 
             return CreatedAtRoute(nameof(GetUserById), new {Id = usuario.Id}, usuario);
             // return Ok(usuarioReadDto);
