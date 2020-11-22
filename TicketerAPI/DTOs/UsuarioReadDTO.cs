@@ -18,6 +18,7 @@ namespace TicketerAPI.DTOs
                 return textoSinAcentos + "_" + Id;                 
             }
         }      
+        public string Contrasena { get; set; }
         public Rol Rol { get; set; }
     }
 }

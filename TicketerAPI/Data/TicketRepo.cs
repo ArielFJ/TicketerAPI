@@ -22,7 +22,8 @@ namespace TicketerAPI.Data
                             .Include(t => t.Prioridad)
                             .Include(t => t.Servicio)
                             .Include(t => t.TicketStatus)
-                            .Include(t => t.Usuario)
+                            .Include(t => t.Usuario).ThenInclude(u => u.Rol)
+                            .Include(t => t.Cliente)
                             .ToListAsync();
         }
 
@@ -32,7 +33,8 @@ namespace TicketerAPI.Data
                             .Include(t => t.Prioridad)
                             .Include(t => t.Servicio)
                             .Include(t => t.TicketStatus)
-                            .Include(t => t.Usuario)
+                            .Include(t => t.Usuario).ThenInclude(u => u.Rol)
+                            .Include(t => t.Cliente)
                             .FirstOrDefaultAsync(t => t.Id == id);
         }
 

@@ -45,6 +45,14 @@ namespace TicketerAPI
             services.AddScoped<ITicketStatusRepo, TicketStatusRepo>();
             services.AddScoped<IClienteRepo, ClienteRepo>();
             
+            services.AddCors(options => {
+               options.AddPolicy("default", builder => {
+                   builder.AllowAnyOrigin();
+                   builder.AllowAnyMethod();
+                   builder.AllowAnyHeader();
+               });
+            });
+
             services
                 .AddControllers()
                 .AddNewtonsoftJson(s => {
@@ -69,9 +77,11 @@ namespace TicketerAPI
 
             app.UseHttpsRedirection();
 
+            app.UseCors("default");
+
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

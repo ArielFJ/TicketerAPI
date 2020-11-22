@@ -62,6 +62,8 @@ namespace TicketerAPI.ContTicketlers
             await _repo.CreateEntity(ticket);
             await _repo.SaveChanges();
 
+            ticket = await _repo.GetById(ticket.Id);
+
             return CreatedAtRoute(nameof(GetTicketById), new {id = ticket.Id}, ticket);
         }
 
