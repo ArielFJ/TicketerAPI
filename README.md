@@ -3,7 +3,7 @@
 Web API that acts as backend of a ticket management web project.
 
 This app uses an AWS MSSQL database to be accesible out of localhost and the API is hosted in
-`http://ticketerapi.eastus.azurecontainer.io/`
+`https://ticketerapi.azurewebsites.net/`
 
 The project in this repo has being set up with a local MSSQL database. If you want to run it, go to `TicketerAPI/appsettings.json` and modify `localConnection` value with your own MSSQL connection string.
 
