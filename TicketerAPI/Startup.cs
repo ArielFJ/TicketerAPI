@@ -34,7 +34,7 @@ namespace TicketerAPI
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddDbContext<TicketerContext>(opt => {
-               opt.UseSqlServer(Configuration.GetConnectionString("localConnection"));
+               opt.UseSqlServer(Configuration.GetConnectionString("awsConnection"));
             });         
 
             services.AddScoped<IUsuarioRepo, UsuarioRepo>();

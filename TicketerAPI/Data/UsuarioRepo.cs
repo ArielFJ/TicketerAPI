@@ -57,7 +57,7 @@ namespace TicketerAPI.Data
 
         public bool CheckUser(string username, string password, out Usuario usuario)
         {            
-            var user = _context.Usuarios.ToList().Where(u => u.NombreUsuario == username).FirstOrDefault();
+            var user = _context.Usuarios.Include(u => u.Rol).ToList().Where(u => u.NombreUsuario == username).FirstOrDefault();
             if(user == null)
             {
                 usuario = null;

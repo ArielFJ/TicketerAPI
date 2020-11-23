@@ -43,8 +43,8 @@ namespace TicketerAPI.Controllers
             return NotFound();
         }
 
-        // GET /api/usuarios/check
-        [HttpGet("check")]
+        // POST /api/usuarios/check
+        [HttpPost("check")]
         public ActionResult<Usuario> CheckUser(LoginDTO loginDTO)
         {            
             Usuario usuario = new Usuario();
